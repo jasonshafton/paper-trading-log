@@ -1,6 +1,6 @@
 # Paper day-trading log
 
-_Simulated trades only, no real money. Updated 2026-10-12 07:47 PT. Strategy v1.0. Goal: show consistent results over 30 sessions before any real capital._
+_Simulated trades only, no real money. Updated 2026-10-12 13:36 PT. Strategy v1.0. Goal: show consistent results over 30 sessions before any real capital._
 
 ## Summary
 
@@ -17,15 +17,21 @@ Day P&L **+$0.00**, running **+$0.00**, fills 0
 
 **Session notes**
 
-_Session in progress (as of 10:44 ET); final results and review after the close._
+_Final (after the 4:00 PM ET close)._
 
 - Watchlist: CRM, IREN, ASTS, TRMD, DHT (all long setups).
 - IREN ORB: paper buy-stop 230 sh @ 36.71, stop 35.74 (~$223 risk), target 2R 38.66. It never triggered and was cancelled when the ORB entry window closed at 10:30 ET.
-- No fills so far. VWAP-reclaim setups can still trigger later in the session.
+- Final: no fills. No VWAP-reclaim long triggered; CRM and DHT stayed below or right at VWAP all morning. Day P&L $0.00, running total $0.00 after 2 of 30 sessions.
 
 **Daily review**
 
-_Review pending._
+**What went right:** The rules held. The one plan (IREN ORB buy-stop 36.71, about $223 risk) only would have filled on real strength, and IREN never got there: it faded to 34.83 (-4.1% open to close) and filled its gap. Missing that trade was the correct outcome. The hindsight check shows the other ORB longs (TRMD, ASTS) broke out and then closed back inside their ranges, so they'd have been small losers (-0.20R and -0.27R) that the invalidation rule cut early. No rule was broken.
+
+**What went wrong:** Zero fills for the second session in a row. Four of five names on a gap-up watchlist faded below VWAP by the close, so the long-only setups had nothing to work with. The IREN plan was armed at 10:10 with price sitting right at its opening-range low (35.76), which echoes Friday's SAIQ plan that was armed after price had already fallen through the range.
+
+**Constructive critique:** Two flat sessions say nothing yet about edge, but they do say something about selection: gap-ups that fade early dominate the list, and long-only ORB/VWAP setups sit idle on those days. The monitor also keeps arming breakouts when price is at the bottom of the range instead of pressing toward the top.
+
+**Proposed change (not adopted yet):** Same as Friday's proposal, slightly sharpened. Only arm an ORB long while the last price is in the upper half of the opening range; drop the candidate if it trades at or below the range low. Two sessions show the pattern but there are no fills to measure it against, so it stays a proposal. Risk rules and playbook v1.0 unchanged.
 
 ## Session 1: 2026-10-09
 
@@ -55,3 +61,4 @@ Current version: **v1.0** (2026-10-09). Change rules: one small change at a time
 |---|---|---|---|---|
 | v1.0 | 2026-10-09 | Baseline: ORB long + VWAP reclaim long (min stop 0.25× ATR). Gap fill and VWAP short dropped. | Backtest showed no edge for gap fill / VWAP short | Active |
 | v1.0 | 2026-10-12 | No change after session 1 (only 1 session, 0 fills: too little data). | — | — |
+| v1.0 | 2026-10-12 | No change after session 2. Proposal pending: arm ORB longs only when price is in the upper half of the opening range. | 2 sessions, 0 fills; SAIQ (10/9) and IREN (10/12) armed at or below the range low | Proposed |
