@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paper day-trading log</title><style>body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:860px;margin:0 auto;padding:16px;line-height:1.55;color:#1d1d1f;background:#fafafa}
+h1{font-size:1.7em}h2{border-top:1px solid #ddd;padding-top:18px;margin-top:28px}
+ul{padding-left:20px}table{border-collapse:collapse;display:block;overflow-x:auto;font-size:.9em}
+th,td{border:1px solid #ddd;padding:5px 8px;text-align:left}th{background:#f0f0f0}
+em{color:#666}@media(prefers-color-scheme:dark){body{background:#111;color:#eee}th{background:#222}th,td{border-color:#333}em{color:#aaa}}</style></head><body><h1>Paper day-trading log</h1>
+<p><em>Simulated trades only, no real money. Updated 2026-10-12 07:44 PT. Strategy v1.0. Goal: show consistent results over 30 sessions before any real capital.</em></p>
+<h2>Summary</h2>
+<ul>
+<li>Sessions done: <strong>2 / 30</strong></li>
+<li>Total P&amp;L: <strong>+$0.00</strong> (avg/session +$0.00; target +$500/day)</li>
+<li>Trades: 0; win rate: <strong>0%</strong> (0W / 0L)</li>
+<li>Expectancy: <strong>n/a (no trades yet)</strong> per trade</li>
+<li>Rule-following: <strong>100%</strong> of trades</li>
+<li>Risk rules (fixed): $250 risk/trade, -$750 daily stop, max 3 trades, long only, no margin.</li>
+</ul>
+<h2>Session 2: 2026-10-12</h2>
+<p>Day P&amp;L <strong>+$0.00</strong>, running <strong>+$0.00</strong>, fills 0</p>
+<p><strong>Session notes</strong></p>
+<p><em>Session in progress (as of 10:44 ET); final results and review after the close.</em></p>
+<ul>
+<li>Watchlist: CRM, IREN, ASTS, TRMD, DHT (all long setups).</li>
+<li>IREN ORB: paper buy-stop 230 sh @ 36.71, stop 35.74 (~$223 risk), target 2R 38.66. It never triggered and was cancelled when the ORB entry window closed at 10:30 ET.</li>
+<li>No fills so far. VWAP-reclaim setups can still trigger later in the session.</li>
+</ul>
+<p><strong>Daily review</strong></p>
+<p><em>Review pending.</em></p>
+<h2>Session 1: 2026-10-09</h2>
+<p>Day P&amp;L <strong>+$0.00</strong>, running <strong>+$0.00</strong>, fills 0</p>
+<p><strong>Session notes</strong></p>
+<ul>
+<li>10:16 monitor: SAIQ ORB armed (OR 5.98-6.53, buy-stop 6.55, stop 5.96, 381 sh, $225 risk). Paper submit at 10:17 REJECTED: last 5.83 was already below the 5.96 stop. 10:30 entry window then closed without a trigger (day high 6.53, never reached 6.55; low 5.23).</li>
+<li>HUM: no setup all morning. Opening range (9:30-9:35) 434.29-453.50 = $19.21 wide vs ATR14 $15.18 (1.27x ATR; rule caps it near 0.5x ATR), so ORB skipped. No VWAP reclaim: at 10:39 last ~431-434 vs VWAP ~442.6, and below the 437.62 pre-market low.</li>
+<li>NN ORB invalidated (closed back inside range). BIAF ORB was a short; Phase 1 is long-only. ALHC, NEA, HASI, PCRX: no setup.</li>
+</ul>
+<p><strong>Daily review</strong></p>
+<p><strong>What went right:</strong> The risk checks worked. The SAIQ plan was rejected because price (5.83) was already below the planned stop (5.96), so we didn't buy into a broken setup. HUM was skipped correctly because its opening range (1.27× ATR) was far beyond the 0.5× ATR cap. No rule was broken.</p>
+<p><strong>What went wrong:</strong> Zero fills. The watchlist had 8 names and none produced a valid long. The SAIQ plan was armed at 10:16 when price had already collapsed through the range, so the monitor spent time on a dead setup.</p>
+<p><strong>Constructive critique:</strong> Session 1 is one data point; a flat day says nothing about edge. The watchlist quality is the bottleneck: several names (BIAF short, NN invalidated) were never going to be long trades under Phase 1 rules.</p>
+<p><strong>Proposed change (not adopted yet):</strong> Have the monitor drop an ORB candidate once price closes below its opening-range low, instead of arming it. Will only adopt if this pattern repeats over the next sessions. Rules unchanged.</p>
+<h2>Strategy changelog</h2>
+<p>Current version: <strong>v1.0</strong> (2026-10-09). Change rules: one small change at a time, each justified by journal data with the evidence cited, never loosening risk-rules.md ($250 risk/trade, −$750 daily stop, 3 trades max, long only, no margin, size steps up only after 30+ sessions and 60+ trades). Changes to filters/entries are re-checked after at least 5 sessions before another change to the same setup.</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Change</th>
+<th>Evidence</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-10-09</td>
+<td>Baseline: ORB long + VWAP reclaim long (min stop 0.25× ATR). Gap fill and VWAP short dropped.</td>
+<td>Backtest showed no edge for gap fill / VWAP short</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>v1.0</td>
+<td>2026-10-12</td>
+<td>No change after session 1 (only 1 session, 0 fills: too little data).</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></body></html>
